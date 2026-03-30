@@ -13,7 +13,7 @@ pipeline {
                 echo "Building.." // we need to ensure the fire library is installed in the agent, so we can run the hello.py file
                 sh '''
                 cd myapp
-                pip install -r requirements.txt  
+                pip install -r requirements.txt  --break-system-packages
                 '''
             }
         }
