@@ -10,9 +10,10 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                echo "Building.."
+                echo "Building.." // we need to ensure the fire library is installed in the agent, so we can run the hello.py file
                 sh '''
-                echo "doing build stuff.."
+                cd myapp
+                pip install -r requirements.txt  
                 '''
             }
         }
@@ -20,7 +21,9 @@ pipeline {
             steps {
                 echo "Testing.."
                 sh '''
-                echo "doing test stuff.."
+                cd myapp
+                python3 hello.py
+                python3 hello.py --name=Siya
                 '''
             }
         }
@@ -28,7 +31,7 @@ pipeline {
             steps {
                 echo 'Deliver....'
                 sh '''
-                echo "doing delivery stuff.."
+                python3 hello.py
                 '''
             }
         }
