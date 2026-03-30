@@ -1,11 +1,11 @@
 pipeline {
     agent { 
         node {
-            label 'docker-agent-python'  # This label should match the label of the agent you want to run this pipeline on
+            label 'docker-agent-python'  // This label should match the label of the agent you want to run this pipeline on
             }
       }
     triggers {
-        pollSCM('*/5 * * * *')   # Polls the SCM every 5 minutes for changes
+        pollSCM('*/5 * * * *')   // Polls the SCM every 5 minutes for changes
     }
     stages {
         stage('Build') {
