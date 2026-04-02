@@ -6,11 +6,10 @@ services:
     networks:
       - jenkins
     environment:
-      - DOCKER_HOST=tcp://docker:2376
+      - DOCKER_HOST=unix:///var/run/docker.sock # Point Jenkins to the Docker socket
       - DOCKER_CERT_PATH=/certs/client
-      - DOCKER_TLS_VERIFY=1
+      - DOCKER_TLS_VERIFY=0
       - TESTCONTAINERS_DOCKER_SOCKET_OVERRIDE=/var/run/docker.sock # For Testcontainers to use the host's Docker socket
-      - DOCKER_TLS_VERIFY=0 # Disable TLS verification for Jenkins to communicate with the Docker daemonS
     ports:
       - "8081:8080"
       - "50000:50000"
